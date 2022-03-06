@@ -20,12 +20,24 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth:admin'])->name('admin.dashboard');
 
 
-Route::post('/admin/register', [AdminAuthController::class,'register'])->name('admin.register');
-Route::get('/admin/register', [AdminAuthController::class,'registerPage'])->name('admin.register.page');
-Route::post('/admin/login', [AdminAuthController::class,'login'])->name('admin.login');
-Route::get('/admin/login', [AdminAuthController::class,'loginPage'])->name('admin.login.page');
+
+Route::middleware('guest:admin')->group(function(){
+    Route::post('/register', [AdminAuthController::class,'register'])->name('admin.register');
+    Route::get('/register', [AdminAuthController::class,'registerPage'])->name('admin.register.page');
+    Route::post('/login', [AdminAuthController::class,'login'])->name('admin.login');
+    Route::get('/login', [AdminAuthController::class,'loginPage'])->name('admin.login.page');
+});
+
+Route::post('/logout', [AdminAuthController::class,'logout'])->middleware('auth:admin')->name('admin.logout');
+
+Route::middleware('auth:admin')->group(function(){
+    Route::get('/categories', function(){
+        return view('pages.category.index');
+    })->name('category.index');
+});
+
 
 require __DIR__.'/auth.php';
