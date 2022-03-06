@@ -21,3 +21,13 @@
     background-color: #a0aec0;
     /*outline: 1px solid slategrey;*/
 }
+
+.nav__link .sub-menu {
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+.nav__link .show-menu {
+    max-height: 600px;
+}
