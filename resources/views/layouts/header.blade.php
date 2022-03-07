@@ -64,11 +64,11 @@
                         </a>
                     </li>
                     <li>
-                       <form action="{{ route('admin.logout') }}" method="POST">
+                       <form action="{{ route('logout') }}" method="POST">
                             @csrf
 
                             <a
-                                href="{{ route('admin.logout') }}"
+                                href="{{ route('logout') }}"
                                 class="text-gray-500 text-sm py-1 flex items-center"
                                 onclick="event.preventDefault(); this.closest('form').submit();"
                             >

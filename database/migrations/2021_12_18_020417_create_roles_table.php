@@ -16,15 +16,10 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
-
-        // Call seeder
-        Artisan::call('db:seed', [
-            '--class' => 'RoleTableSeeder',
-        ]);
 
     }
 

@@ -2,10 +2,10 @@
     <ul class="text-pr-color pl-5 mt-8">
         <li class="mb-1 nav__link">
             <a
-                href="{{ route('admin.dashboard') }}"
+                href="{{ route('dashboard') }}"
                 @class([
                     'py-4 block pl-4 text-sm hover:bg-primary-dark',
-                    'text-secondary-color border-secondary-color border-r-5' => request()->routeIs('admin.dashboard')
+                    'text-secondary-color border-secondary-color border-r-5' => request()->routeIs('dashboard')
                 ])
             >
                 <i class="fa-solid fa-gauge"></i>
