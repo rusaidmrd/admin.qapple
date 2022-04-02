@@ -19,7 +19,15 @@
                             <input wire:model="search" type="text" placeholder="Search for permissions" class="placeholder:text-gray-400 py-1.5 px-4 border-none outline-none bg-transparent focus:ring-0">
                         </div>
                     </div>
-                    <div class="flex space-x-2">
+                    <div class="flex space-x-2 items-center">
+                        <x-input.group borderless paddingless inline for="perPage" label="Per Page">
+                            <x-input.select wire:model="perPage" id="perPage" class="py-1.5 text-gray-400 text-sm">
+                                <option value="7">7</option>
+                                <option value="15">15</option>
+                                <option value="50">50</option>
+                            </x-input.select>
+                        </x-input.group>
+
                         <div class="bg-white border border-gray-200 rounded-md">
                             <button class="text-sm text-gray-400 font-bold py-1.5 px-4">
                                 <i class="fa-solid fa-filter"></i>
@@ -39,6 +47,9 @@
                                 </x-dropdown.item>
                             </x-dropdown>
                         </div>
+
+
+
                         <div class="bg-secondary-color border border-secondary-color rounded-md">
                             <button class="text-sm text-gray-cool py-1.5 px-4" wire:click="create">
                                 <i class="fa-solid fa-square-plus"></i>

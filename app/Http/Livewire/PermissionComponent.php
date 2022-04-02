@@ -3,14 +3,15 @@
 namespace App\Http\Livewire;
 
 use App\Http\Livewire\DataTable\WithBulkAction;
+use App\Http\Livewire\DataTable\WithPerPagePagination;
 use App\Http\Livewire\DataTable\WithSorting;
 use Livewire\Component;
 use App\Models\Permission;
-use Livewire\WithPagination;
+
 
 class PermissionComponent extends Component
 {
-    use WithPagination, WithSorting, WithBulkAction;
+    use WithPerPagePagination, WithSorting, WithBulkAction;
 
     public $search = "";
     public $showEditModal = false;
@@ -78,7 +79,7 @@ class PermissionComponent extends Component
 
     public function getRowsProperty()
     {
-        return $this->rowsQuery->paginate(7);
+        return $this->applyPagination($this->rowsQuery);
     }
 
 
