@@ -21,6 +21,9 @@ module.exports = {
                 "secondary-color": "#c94b4b",
                 "dark-color": "#230725",
                 "pr-color": "#99659d",
+                "gray-color": "#f2f2f2",
+                "gray-cool": "#faf7f7",
+                "error-color": "#ff6d6d",
             },
             boxShadow: {
                 bottom: "0 0 4px 4px rgb(0 0 0 / 8%)",

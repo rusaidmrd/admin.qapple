@@ -1,5 +1,5 @@
 <nav
-    class="absolute inset-0 transform duration-200 lg:transform-none lg:relative z-10 bg-dark-color text-white h-screen w-64 overflow-auto" id="sidebar-scroll"
+    class="absolute inset-0 transform duration-200 lg:transform-none lg:relative z-10 bg-dark-color text-white h-100 w-64 overflow-auto" id="sidebar-scroll"
     :class="{'translate-x-0':isNavOpen===true,'-translate-x-full':isNavOpen===false}"
 >
     <div class="logo bg-primary-dark flex items-center h-16 justify-between pl-10 pr-4">
@@ -11,6 +11,5 @@
             </svg>
         </div>
     </div>
-
-    @include('layouts.sidebar-menu')
+    <x-sidebar/>
 </nav>

@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermissionController;
+use App\Http\Livewire\PermissionComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ Route::middleware(['auth'])->get('/categories', function(){
 
 Route::middleware(['auth'])->group(function(){
     Route::post('/permissions/store',[PermissionController::class,'store'])->name('permissions.store');
-    Route::get('/permissions/index',[PermissionController::class,'index'])->name('permissions.index');
+    Route::get('/permissions',PermissionComponent::class)->name('permissions.index');
     Route::get('/permissions/show/{permission}',[PermissionController::class,'show'])->name('permissions.show');
     Route::get('/permissions/create',[PermissionController::class,'create'])->name('permissions.create');
     Route::get('/permissions/edit/{permission}',[PermissionController::class,'edit'])->name('permissions.edit');

@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+    --primary-color: #3a0e3e;
+}
+
 [x-cloak] {
     display: none !important;
 }
@@ -30,4 +34,9 @@
 
 .nav__link .show-menu {
     max-height: 600px;
+}
+
+.pagination span.active {
+    background-color: var(--primary-color);
+    color: white;
 }

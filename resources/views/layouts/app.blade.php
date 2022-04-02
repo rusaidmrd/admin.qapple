@@ -17,25 +17,24 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        @livewireStyles
+
     </head>
     <body class="font-sans antialiased">
 
-        <div class="min-h-screen bg-gray-200 lg:flex" x-data="{isNavOpen:false}">
-            @include('layouts.navigation')
-
+        <div class="min-h-screen bg-gray-color lg:flex" x-data="{isNavOpen:false}">
+            <x-navigation />
             <div class="relative z-0 lg:flex-grow">
-                @include('layouts.header')
-
-                <!-- Page Content -->
+                <x-top-header />
                 <main>
                     {{ $slot }}
                 </main>
-
             </div>
-
-
-
         </div>
+
+        @livewireScripts
     </body>
 </html>

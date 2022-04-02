@@ -5493,16 +5493,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   \**********************************************/
 /***/ (() => {
 
-// Sidebar Navigation Link
-var navLinks = document.querySelectorAll(".nav__link");
-navLinks.forEach(function (link) {
-  return link.addEventListener("click", onClickNavlink);
-});
-
-function onClickNavlink(e) {
-  e.preventDefault();
-  this.lastElementChild.classList.toggle("show-menu");
-}
+// // Sidebar Navigation Link
+// const navLinks = document.querySelectorAll(".nav__link");
+// navLinks.forEach((link) => link.addEventListener("click", onClickNavlink));
+// function onClickNavlink(e) {
+//     e.preventDefault();
+//     console.log(e.target);
+//     //this.nextSibling.classList.toggle("show-menu");
+// }
 
 /***/ }),
 
