@@ -16,6 +16,7 @@ class AttributesTableSeeder extends Seeder
     {
         // Create a size attribute
         Attribute::create([
+            'id' => 1,
             'code'          =>  'size',
             'name'          =>  'Size',
             'frontend_type' =>  'radio',
@@ -25,6 +26,7 @@ class AttributesTableSeeder extends Seeder
 
         // Create a color attribute
         Attribute::create([
+            'id' => 2,
             'code'          =>  'color',
             'name'          =>  'Color',
             'frontend_type' =>  'radio',
