@@ -19,7 +19,9 @@
                         <x-input.group label="Brand" for="brand">
                             <select class="form-input" id="brand">
                                 <option value="">Select brand</option>
-                                <option value="1">Apple</option>
+                                @foreach ($brands as $brand)
+                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                @endforeach
                             </select>
                         </x-input.group>
                         <x-input.group label="Category" for="category">
