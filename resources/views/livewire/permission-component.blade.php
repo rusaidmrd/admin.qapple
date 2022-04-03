@@ -151,7 +151,6 @@
                 {{ $permissions->links('vendor.pagination.custom') }}
             </x-slot>
         </x-table>
-
     </div>
 
     <form wire:submit.prevent="save">

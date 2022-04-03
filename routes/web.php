@@ -2,8 +2,9 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PermissionController;
 use App\Http\Livewire\PermissionComponent;
+use App\Http\Livewire\Products\AddProduct;
+use App\Http\Livewire\Products\ViewProducts;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,13 +42,13 @@ Route::middleware(['auth'])->get('/categories', function(){
 
 
 Route::middleware(['auth'])->group(function(){
-    Route::post('/permissions/store',[PermissionController::class,'store'])->name('permissions.store');
-    Route::get('/permissions',PermissionComponent::class)->name('permissions.index');
-    Route::get('/permissions/show/{permission}',[PermissionController::class,'show'])->name('permissions.show');
-    Route::get('/permissions/create',[PermissionController::class,'create'])->name('permissions.create');
-    Route::get('/permissions/edit/{permission}',[PermissionController::class,'edit'])->name('permissions.edit');
-    Route::put('/permissions/update/{permission}',[PermissionController::class,'update'])->name('permissions.update');
-    Route::delete('/permissions/delete/{permission}',[PermissionController::class,'destroy'])->name('permissions.delete');
-});
 
+    Route::get('/permissions',PermissionComponent::class)->name('permissions.index');
+
+    Route::prefix('products')->group(function(){
+        Route::get('/',ViewProducts::class)->name('products.index');
+        Route::get('/create',AddProduct::class)->name('products.create');
+    });
+
+});
 

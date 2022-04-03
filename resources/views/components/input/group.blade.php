@@ -10,10 +10,10 @@
 ])
 
 @if($inline)
-    <div class="flex items-center space-x-2">
-        <label for="{{ $for }}" class="block text-sm font-medium leading-5 text-gray-700">{{ $label }}</label>
+    <div class="flex mb-5 items-center space-x-3">
+        <label for="{{ $for }}" class="block font-semibold leading-5 text-gray-600">{{ $label }}</label>
 
-        <div class="relative rounded-md shadow-sm">
+        <div class="relative mt-2">
             {{ $slot }}
 
             @if ($error)
@@ -26,12 +26,12 @@
         </div>
     </div>
 @else
-    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start {{ $borderless ? '' : ' sm:border-t ' }} sm:border-gray-200 {{ $paddingless ? '' : ' sm:py-5 ' }}">
-        <label for="{{ $for }}" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+    <div class="flex flex-col mb-5">
+        <label for="{{ $for }}" class="block font-semibold leading-5 text-gray-600">
             {{ $label }}
         </label>
 
-        <div class="sm:mt-0 sm:col-span-2">
+        <div class="mt-2">
             {{ $slot }}
 
             @if ($error)

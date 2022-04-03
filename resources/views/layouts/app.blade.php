@@ -21,7 +21,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         @livewireStyles
-
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@1.2.3/dist/trix.css">
     </head>
     <body class="font-sans antialiased">
 
@@ -36,5 +36,6 @@
         </div>
 
         @livewireScripts
+        <script src="https://unpkg.com/trix@1.2.3/dist/trix.js"></script>
     </body>
 </html>
