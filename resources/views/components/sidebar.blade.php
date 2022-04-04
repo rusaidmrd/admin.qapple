@@ -26,7 +26,7 @@
                 href="{{ route('products.index') }}"
                 @class([
                     'py-4 block pl-4 text-sm hover:bg-primary-dark',
-                    'text-secondary-color border-secondary-color border-r-5' => request()->routeIs('products.index') || request()->routeIs('products.create')
+                    'text-secondary-color border-secondary-color border-r-5' => request()->routeIs('products.*')
                 ])
             >
                 <i class="fa-solid fa-bag-shopping"></i>

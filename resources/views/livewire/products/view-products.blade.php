@@ -5,6 +5,7 @@
 <div class="py-8">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <x-table>
+
             <x-slot name="tableTitle">
                 <div class="mb-4">
                     <h3 class="font-bold text-lg text-gray-500">All Products</h3>

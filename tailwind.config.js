@@ -23,6 +23,7 @@ module.exports = {
                 "pr-color": "#99659d",
                 "gray-color": "#f2f2f2",
                 "gray-cool": "#faf7f7",
+                "success-color": "#66c272",
                 "error-color": "#ff6d6d",
             },
             boxShadow: {

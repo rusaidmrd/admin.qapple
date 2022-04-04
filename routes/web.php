@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\PermissionComponent;
 use App\Http\Livewire\Products\AddProduct;
+use App\Http\Livewire\Products\EditProduct;
 use App\Http\Livewire\Products\ViewProducts;
 
 /*
@@ -48,6 +49,7 @@ Route::middleware(['auth'])->group(function(){
     Route::prefix('products')->group(function(){
         Route::get('/',ViewProducts::class)->name('products.index');
         Route::get('/create',AddProduct::class)->name('products.create');
+        Route::get('/edit/{product}',EditProduct::class)->name('products.edit');
     });
 
 });

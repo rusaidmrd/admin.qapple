@@ -3,15 +3,15 @@
 namespace App\Http\Livewire\Products;
 
 use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
+use App\Models\Category;
 
-class AddProduct extends Component
+class EditProduct extends Component
 {
 
     public Product $product;
-    public $selectedCategories=[];
+    public $selectedCategories=['2','3'];
 
     protected $rules = [
         'product.name'      =>  'required|max:255',
@@ -27,21 +27,23 @@ class AddProduct extends Component
         'product.featured' => 'sometimes',
     ];
 
+    public function mount($product)
+    {
+        $this->product = $product;
+    }
 
-    public function mount() { $this->product = new Product(); }
-
-    public function save()
+    public function change()
     {
         $this->validate();
 
         if($this->product->status === null) $this->product->status = 0;
         if($this->product->featured === null) $this->product->status = 0;
 
-        $this->product->save();
+        $this->product->update();
 
         $this->product->categories()->sync($this->selectedCategories);
 
-        session()->flash('message','Product successfully added !');
+        session()->flash('message','Product successfully updated !');
 
         return redirect()->to(route('products.edit',$this->product->id));
 
@@ -52,7 +54,7 @@ class AddProduct extends Component
         $categories = Category::where('slug','!=','root')->get();
         $brands = Brand::all();
 
-        return view('livewire.products.add-product',[
+        return view('livewire.products.edit-product',[
             'categories' => $categories,
             'brands' => $brands
         ]);
