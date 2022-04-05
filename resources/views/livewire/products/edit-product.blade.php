@@ -142,11 +142,8 @@
                        <livewire:products.upload-images :product="$product" />
                     </div>
                 </div>
-                <div x-show="openTab === 3" class="bg-white shadow rounded-md sm:rounded-lg">
-                    <div class="p-8">
-                        <h1 class="text-3xl">Product Attributes</h1>
-
-                    </div>
+                <div x-show="openTab === 3">
+                    <livewire:products.product-attributes :product="$product" />
                 </div>
                 <div x-show="openTab === 4" class="bg-white shadow rounded-md sm:rounded-lg">
                     <div class="p-8">

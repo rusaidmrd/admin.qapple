@@ -11,7 +11,7 @@ class EditProduct extends Component
 {
 
     public Product $product;
-    public $selectedCategories=['2','3'];
+    public $selectedCategories=[];
 
     protected $rules = [
         'product.name'      =>  'required|max:255',
