@@ -80,3 +80,7 @@
 .select2-selection--multiple {
     border-color: transparent !important;
 }
+
+.filepond--item {
+    width: calc(50% - 0.5em);
+}

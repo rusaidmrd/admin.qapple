@@ -137,12 +137,9 @@
                        </form>
                     </div>
                 </div>
-                <div x-show="openTab === 2" class="bg-white shadow rounded-md sm:rounded-lg">
+                <div x-show="openTab === 2" class="bg-white shadow rounded-md sm:rounded-lg relative">
                     <div class="p-8">
-                        <h1 class="text-2xl font-semibold">Upload images for {{ $product->name }}</h1>
-                        <div>
-                            <input type="file">
-                        </div>
+                       <livewire:products.upload-images :product="$product" />
                     </div>
                 </div>
                 <div x-show="openTab === 3" class="bg-white shadow rounded-md sm:rounded-lg">

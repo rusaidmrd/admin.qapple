@@ -47,4 +47,16 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class, 'product_categories', 'product_id', 'category_id');
     }
+
+
+    public function maximumImages()
+    {
+        return $this->images->count() >= 5 ? true : false;
+    }
+
+    public function imageCount()
+    {
+        return $this->images->count();
+    }
+
 }
