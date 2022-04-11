@@ -20,13 +20,11 @@
                         </div>
                     </div>
                     <div class="flex space-x-2 items-center">
-                        <x-input.group borderless paddingless inline for="perPage" label="Per Page">
-                            <x-input.select wire:model="perPage" id="perPage" class="py-1.5 text-gray-400 text-sm">
-                                <option value="7">7</option>
-                                <option value="15">15</option>
-                                <option value="50">50</option>
-                            </x-input.select>
-                        </x-input.group>
+                        <x-dropdown.inline class="py-1.5 text-sm">
+                            <option value="7">7</option>
+                            <option value="15">15</option>
+                            <option value="50">50</option>
+                        </x-dropdown.inline>
 
                         <div class="bg-white border border-gray-200 rounded-md">
                             <button class="text-sm text-gray-400 font-bold py-1.5 px-4">

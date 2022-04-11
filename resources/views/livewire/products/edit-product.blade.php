@@ -21,9 +21,6 @@
                         <li @click="openTab = 3" class="mt-4 cursor-pointer">
                             <span :class="openTab === 3 ? 'tab-before-active' : 'tab-before' " class="px-0 py-2 relative">Product Attributes</span>
                         </li>
-                        <li @click="openTab = 4" class="mt-4 cursor-pointer">
-                            <span :class="openTab === 4 ? 'tab-before-active' : 'tab-before' " class="px-0 py-2 relative">Features</span>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -145,11 +142,7 @@
                 <div x-show="openTab === 3">
                     <livewire:products.product-attributes :product="$product" />
                 </div>
-                <div x-show="openTab === 4" class="bg-white shadow rounded-md sm:rounded-lg">
-                    <div class="p-8">
-                        <h1 class="text-3xl">Product Features</h1>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

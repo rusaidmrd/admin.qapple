@@ -51,10 +51,71 @@
 
     <div class="p-8 mb-4 bg-white shadow rounded-md sm:rounded-lg">
         <h1 class="text-xl font-semibold">Product Attributes</h1>
-        @foreach ($productAttributes as $productAttribute )
-            <ol>
-                <p>{{ $productAttribute->value }}</p>
-            </ol>
-        @endforeach
+        <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                  <table class="min-w-full">
+                    <thead class="bg-white border-b">
+                      <tr>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Value
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Quantity
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Price
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($productAttributes as $productAttribute )
+                            <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{ $productAttribute->value }}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{ $productAttribute->quantity }}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{ $productAttribute->price }}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    <button wire:click="getDeleteId({{ $productAttribute->id }})" class="text-error-color border border-error-color p-2 rounded" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </td>
+                              </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
+
+    <form wire:submit.prevent="deleteData">
+        <x-modal.confirmation wire:model.defer="showDeleteModal">
+            <x-slot name="title"><span class="text-gray-500 font-semibold">Delete Permission</span></x-slot>
+
+            <x-slot name="content">
+                <div class="py-8 text-cool-gray-700">Are you sure you? This action is irreversible.</div>
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-button.secondary wire:click="hideDeleteModal">Cancel</x-button.secondary>
+
+                <x-button.primary type="submit">Delete</x-button.primary>
+            </x-slot>
+        </x-modal.confirmation>
+    </form>
+
+
 </div>

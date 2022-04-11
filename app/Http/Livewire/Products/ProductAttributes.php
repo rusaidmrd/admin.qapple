@@ -19,6 +19,9 @@ class ProductAttributes extends Component
     public $selectedAttributes;
     public $attributeValues = [];
 
+    public $deleteId='';
+    public $showDeleteModal = false;
+
     public function rules() {
         return [
             'productAttribute.value' => 'required|unique:product_attributes,value',
@@ -50,6 +53,25 @@ class ProductAttributes extends Component
         $this->product = $this->product->fresh();
 
         $this->resetExcept(['product','productAttribute']);
+    }
+
+    public function getDeleteId($id)
+    {
+        $this->deleteId = $id;
+        $this->showDeleteModal = true;
+    }
+
+    public function hideDeleteModal()
+    {
+        $this->showDeleteModal = false;
+        $this->reset('deleteId');
+    }
+
+    public function deleteData()
+    {
+        ProductAttribute::find($this->deleteId)->delete();
+        $this->showDeleteModal = false;
+        $this->product = $this->product->fresh();
     }
 
     public function render()
