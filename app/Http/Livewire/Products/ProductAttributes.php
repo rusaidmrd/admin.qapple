@@ -8,6 +8,7 @@ use App\Models\Attribute;
 use App\Models\AttributeValue;
 use Illuminate\Validation\Rule;
 use App\Models\ProductAttribute;
+use App\Rules\UniqueProductAttributes;
 
 class ProductAttributes extends Component
 {
@@ -24,7 +25,10 @@ class ProductAttributes extends Component
 
     public function rules() {
         return [
-            'productAttribute.value' => 'required',
+            'productAttribute.value' => [
+                'required',
+                new UniqueProductAttributes($this->product,$this->productAttribute,$this->selectedAttributes)
+            ],
             'productAttribute.quantity' => 'required',
             'productAttribute.price' => 'required',
         ];

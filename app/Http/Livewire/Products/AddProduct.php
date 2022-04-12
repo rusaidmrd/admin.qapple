@@ -27,8 +27,15 @@ class AddProduct extends Component
         'product.featured' => 'sometimes',
     ];
 
-
     public function mount() { $this->product = new Product(); }
+
+
+    public function updated($sku)
+    {
+        $this->validateOnly($sku,[
+            'product.sku' => 'max:8|unique:products,sku'
+        ]);
+    }
 
     public function save()
     {
