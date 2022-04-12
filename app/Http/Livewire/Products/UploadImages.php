@@ -20,7 +20,7 @@ class UploadImages extends Component
     public function rules()
     {
         return [
-            'files' => 'required',
+            'files' => 'required|max:1000',
             'files.*' => [
                 'image',
                 new MaxImages($this->product, $this->files),
@@ -35,14 +35,13 @@ class UploadImages extends Component
 
     public function updatedFiles()
     {
-        $this->validate([
-            'files.*' => 'image|max:1000',
-        ]);
+        // $this->validate([
+        //     'files.*' => 'image|max:1000',
+        // ]);
     }
 
     public function save()
     {
-
 
         $this->validate();
 

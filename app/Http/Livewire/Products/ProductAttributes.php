@@ -24,7 +24,7 @@ class ProductAttributes extends Component
 
     public function rules() {
         return [
-            'productAttribute.value' => 'required|unique:product_attributes,value',
+            'productAttribute.value' => 'required',
             'productAttribute.quantity' => 'required',
             'productAttribute.price' => 'required',
         ];
@@ -47,9 +47,14 @@ class ProductAttributes extends Component
     public function saveProductAttribute()
     {
         $this->validate();
-        $this->productAttribute['attribute_id'] = $this->selectedAttributes;
 
-        $this->product->attributes()->save($this->productAttribute);
+        $this->product->attributes()->create([
+            'quantity' => $this->productAttribute->quantity,
+            'price' => $this->productAttribute->price,
+            'attribute_id' => $this->selectedAttributes,
+            'value' => $this->productAttribute->value,
+        ]);
+
         $this->product = $this->product->fresh();
 
         $this->resetExcept(['product','productAttribute']);

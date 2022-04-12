@@ -35,7 +35,7 @@ class AddProduct extends Component
         $this->validate();
 
         if($this->product->status === null) $this->product->status = 0;
-        if($this->product->featured === null) $this->product->status = 0;
+        if($this->product->featured === null) $this->product->featured = 0;
 
         $this->product->save();
 

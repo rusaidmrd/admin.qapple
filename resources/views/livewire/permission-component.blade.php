@@ -135,7 +135,7 @@
                                 <x-table.td colspan="6">
                                     <div class="flex justify-center items-center space-x-2">
                                         {{-- <x-icon.inbox class="h-8 w-8 text-cool-gray-400" /> --}}
-                                        <span class="font-medium py-8 text-cool-gray-400 text-xl">No transactions found...</span>
+                                        <span class="font-medium py-8 text-cool-gray-400 text-xl">No permissions found...</span>
                                     </div>
                                 </x-table.td>
                             </x-table.tbody-row>
