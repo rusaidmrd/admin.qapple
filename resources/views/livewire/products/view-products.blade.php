@@ -63,8 +63,7 @@
                         <thead>
                             <tr>
                                 <x-table.th class="w-8">
-                                    <x-input.checkbox  />
-                                    {{-- <x-input.checkbox wire:model="selectPage" /> --}}
+                                    <x-input.checkbox wire:model="selectPage" />
                                 </x-table.th>
 
                                 <x-table.th class="w-10" sortable wire:click="sortBy('id')" :direction="$sortField === 'id' ? $sortDirection : null">
@@ -83,7 +82,7 @@
                                     Category
                                 </x-table.th>
 
-                                <x-table.th>
+                                <x-table.th sortable wire:click="sortBy('price')" :direction="$sortField === 'price' ? $sortDirection : null">
                                     Price
                                 </x-table.th>
 
@@ -101,20 +100,20 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-100">
-                            {{-- @if ($selectPage)
+                            @if ($selectPage)
                                 <x-table.tbody-row class="bg-amber-100" wire:key="row-message">
-                                    <x-table.td colspan="5">
+                                    <x-table.td colspan="9">
                                         @unless ($selectAll)
                                            <div>
-                                                <span class="text-gray-500">You have selected <strong>{{ $permissions->count() }}</strong> permissions, do you want to select all <strong>{{ $permissions->total() }}</strong> ?</span>
+                                                <span class="text-gray-500">You have selected <strong>{{ $products->count() }}</strong> products, do you want to select all <strong>{{ $products->total() }}</strong> ?</span>
                                                 <x-button.link wire:click="selectAll" class="text-gray-600 ml-1 underline font-bold">Select All</x-button.link>
                                            </div>
                                         @else
-                                            <span class="text-gray-500">You are currently selecting all <strong>{{ $permissions->total() }}</strong> permissions.</span>
+                                            <span class="text-gray-500">You are currently selecting all <strong>{{ $products->total() }}</strong> products.</span>
                                         @endif
                                     </x-table.td>
                                 </x-table.tbody-row>
-                            @endif --}}
+                            @endif
                             @forelse ($products as $product)
                                 <x-table.tbody-row wire:loading.class.delay="opacity-50" wire:key="row-{{ $product->id }}">
                                     <x-table.td>
@@ -145,7 +144,7 @@
                                     </x-table.td>
 
                                     <x-table.td>
-                                        <x-status active="{{ $product->status }}" class="text-xs">
+                                        <x-status wire:click="toggleActivate({{ $product->id }})" active="{{ $product->status }}" class="text-xs cursor-pointer">
                                             {{ $product->status ? 'Active' : 'Inactive' }}
                                         </x-status>
                                     </x-table.td>

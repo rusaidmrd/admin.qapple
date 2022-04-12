@@ -12,7 +12,7 @@
         <span class="text-gray-500">{{ $slot }}</span>
 
     @else
-        <button {{ $attributes->except('class') }} class="flex items-center space-x-1 text-left text-base leading-4 font-bold text-gray-500 uppercase tracking-wider group focus:outline-none focus:underline">
+        <button {{ $attributes->except('class') }} class="flex items-center space-x-1 text-left text-base leading-4 font-bold text-gray-500 tracking-wider group focus:outline-none focus:underline">
             <span>{{ $slot }}</span>
             <span class="relative flex items-center">
                 @if ($direction === 'asc')

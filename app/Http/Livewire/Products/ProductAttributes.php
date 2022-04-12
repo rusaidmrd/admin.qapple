@@ -34,9 +34,6 @@ class ProductAttributes extends Component
         ];
     }
 
-    // Rule::unique('product_attributes')
-    // ->where('attribute_id', $this->selectedAttributes)
-    // ->where('value', $this->productAttribute->value)
     public function mount($product)
     {
         $this->product = $product;

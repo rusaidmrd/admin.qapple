@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Products;
 
+use App\Http\Livewire\DataTable\WithBulkAction;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
 use App\Http\Livewire\DataTable\WithSorting;
 use App\Models\Product;
@@ -10,7 +11,7 @@ use Livewire\Component;
 class ViewProducts extends Component
 {
 
-    use WithSorting, WithPerPagePagination;
+    use WithSorting, WithPerPagePagination,WithBulkAction;
 
     public $search = "";
     public Product $product;
@@ -18,6 +19,14 @@ class ViewProducts extends Component
     public function mount()
     {
         $this->product = $this->makeBlankProduct();
+    }
+
+    public function toggleActivate($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->status = !$product->status;
+        $product->save();
+        $this->product = $product->fresh();
     }
 
     public function makeBlankProduct()
