@@ -26,12 +26,12 @@
                             <option value="50">50</option>
                         </x-dropdown.inline>
 
-                        <div class="bg-white border border-gray-200 rounded-md">
+                        {{-- <div class="bg-white border border-gray-200 rounded-md">
                             <button class="text-sm text-gray-400 font-bold py-1.5 px-4">
                                 <i class="fa-solid fa-filter"></i>
                                 <span class="ml-1">Filters</span>
                             </button>
-                        </div>
+                        </div> --}}
                         <div class="bg-white border border-gray-200 rounded-md">
                             <x-dropdown label="Bulk Actions">
                                 <x-dropdown.item wire:click="exportSelected" type="button" class="flex items-center space-x-2">
@@ -155,7 +155,7 @@
 
                                     <x-table.td>
                                         <div class="space-x-0.5">
-                                            <a href="{{ route('products.edit',$product->id) }}" class="border-amber-300  text-amber-400 ">Edit</a>
+                                            <a href="{{ route('products.edit',$product->id) }}" class="text-primary-color underline">Edit</a>
                                         </div>
                                     </x-table.td>
 
