@@ -5452,7 +5452,18 @@ __webpack_require__(/*! ../js/section/sidebar-menu */ "./resources/js/section/si
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
-alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start(); // Select2 plugin implementation
+
+$(".select-all").on("click", function () {
+  var $select2 = $(this).parent().siblings(".select2");
+  $select2.find("option").prop("selected", "selected");
+  $select2.trigger("change");
+});
+$(".deselect-all").on("click", function () {
+  var $select2 = $(this).parent().siblings(".select2");
+  $select2.find("option").prop("selected", "");
+  $select2.trigger("change");
+});
 
 /***/ }),
 

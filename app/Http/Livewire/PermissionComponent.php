@@ -16,6 +16,8 @@ class PermissionComponent extends Component
     public $search = "";
     public $showEditModal = false;
     public $showDeleteModal = false;
+    public $modalTitle;
+
     public Permission $editing;
 
 
@@ -33,12 +35,14 @@ class PermissionComponent extends Component
     public function create()
     {
         if($this->editing->getKey()) $this->editing = $this->makeBlankPermission();
+        $this->modalTitle = "Add Permission";
         $this->showEditModal = true;
     }
 
     public function edit(Permission $permission)
     {
         if($this->editing->isNot($permission)) $this->editing = $permission;
+        $this->modalTitle = "Edit Permission";
         $this->showEditModal = true;
     }
 

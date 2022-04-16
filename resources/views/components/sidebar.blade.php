@@ -67,7 +67,7 @@
                     <a href="#" class="py-2 pl-4 block text-sm hover:bg-primary-dark">User list</a>
                 </li>
                 <li>
-                    <a href="#" class="py-2 pl-4 block text-sm hover:bg-primary-dark">Roles</a>
+                    <a href="{{ route('roles.index') }}" class="py-2 pl-4 block text-sm hover:bg-primary-dark">Roles</a>
                 </li>
                 <li>
                     <a href="{{ route('permissions.index') }}" class="py-2 pl-4 block text-sm hover:bg-primary-dark">Permissions</a>

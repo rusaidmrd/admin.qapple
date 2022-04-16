@@ -6,6 +6,7 @@ use App\Http\Livewire\PermissionComponent;
 use App\Http\Livewire\Products\AddProduct;
 use App\Http\Livewire\Products\EditProduct;
 use App\Http\Livewire\Products\ViewProducts;
+use App\Http\Livewire\UserManagement\RoleComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,7 @@ Route::middleware(['auth'])->get('/categories', function(){
 Route::middleware(['auth'])->group(function(){
 
     Route::get('/permissions',PermissionComponent::class)->name('permissions.index');
+    Route::get('/roles',RoleComponent::class)->name('roles.index');
 
     Route::prefix('products')->group(function(){
         Route::get('/',ViewProducts::class)->name('products.index');

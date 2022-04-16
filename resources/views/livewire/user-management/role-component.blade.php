@@ -1,6 +1,6 @@
 
 @section('page-heading')
-<h3 class="font-bold text-xl">User Management - Permission</h3>
+<h3 class="font-bold text-xl">User Management - Roles</h3>
 @endsection
 
 
@@ -9,14 +9,14 @@
         <x-table>
             <x-slot name="tableTitle">
                 <div class="mb-4">
-                    <h3 class="font-bold text-lg text-gray-500">Permissions Details</h3>
+                    <h3 class="font-bold text-lg text-gray-500">Roles Details</h3>
                 </div>
             </x-slot>
             <x-slot name="tableFilter">
                 <div class="mb-6 rounded-md flex items-center justify-between">
                     <div class="w-96">
                         <div class="rounded-md bg-white pl-2 flex items-center border border-gray-200">
-                            <input wire:model="search" type="text" placeholder="Search for permissions" class="placeholder:text-gray-400 py-1.5 px-4 border-none outline-none bg-transparent focus:ring-0">
+                            <input wire:model="search" type="text" placeholder="Search for roles" class="placeholder:text-gray-400 py-1.5 px-4 border-none outline-none bg-transparent focus:ring-0">
                         </div>
                     </div>
                     <div class="flex space-x-2 items-center">
@@ -45,7 +45,7 @@
                         <div class="bg-secondary-color border border-secondary-color rounded-md">
                             <button class="text-sm text-gray-cool py-1.5 px-4" wire:click="create">
                                 <i class="fa-solid fa-square-plus"></i>
-                                <span class="ml-1">Add Permission</span>
+                                <span class="ml-1">Add role</span>
                             </button>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                                 </x-table.th>
 
                                 <x-table.th>
-                                    Date Added
+                                    Permissions
                                 </x-table.th>
 
                                 <x-table.th class="w-64">
@@ -83,36 +83,41 @@
                                     <x-table.td colspan="5">
                                         @unless ($selectAll)
                                            <div>
-                                                <span class="text-gray-500">You have selected <strong>{{ $permissions->count() }}</strong> permissions, do you want to select all <strong>{{ $permissions->total() }}</strong> ?</span>
+                                                <span class="text-gray-500">You have selected <strong>{{ $roles->count() }}</strong> roles, do you want to select all <strong>{{ $roles->total() }}</strong> ?</span>
                                                 <x-button.link wire:click="selectAll" class="text-gray-600 ml-1 underline font-bold">Select All</x-button.link>
                                            </div>
                                         @else
-                                            <span class="text-gray-500">You are currently selecting all <strong>{{ $permissions->total() }}</strong> permissions.</span>
+                                            <span class="text-gray-500">You are currently selecting all <strong>{{ $roles->total() }}</strong> roles.</span>
                                         @endif
                                     </x-table.td>
                                 </x-table.tbody-row>
                             @endif
-                            @forelse ($permissions as $permission)
-                                <x-table.tbody-row wire:loading.class.delay="opacity-50" wire:key="row-{{ $permission->id }}">
+                            @forelse ($roles as $role)
+                                <x-table.tbody-row wire:loading.class.delay="opacity-50" wire:key="row-{{ $role->id }}">
                                     <x-table.td>
-                                        <x-input.checkbox wire:model="selected" value="{{ $permission->id }}" />
+                                        <x-input.checkbox wire:model="selected" value="{{ $role->id }}" />
                                     </x-table.td>
 
                                     <x-table.td>
-                                        {{ $permission->id }}
+                                        {{ $role->id }}
                                     </x-table.td>
 
                                     <x-table.td>
-                                        {{ $permission->name }}
+                                        {{ $role->name }}
                                     </x-table.td>
 
-                                    <x-table.td>
-                                        {{ $permission->created_at->toFormattedDateString() }}
+                                    <x-table.td class="py-6">
+                                        <div class="flex flex-row flex-wrap">
+
+                                            @foreach ($role->permissions as $key => $permission )
+                                                <span class="text-xs bg-cyan-600 text-white py-1 px-4 rounded-md mr-1 mb-1">{{ $permission->name }}</span>
+                                            @endforeach
+                                        </div>
                                     </x-table.td>
 
                                     <x-table.td>
                                         <div class="space-x-0.5">
-                                            <x-button.action wire:click="edit({{ $permission->id }})" class="bg-green-50 text-green-500 border-green-300 border">
+                                            <x-button.action wire:click="edit({{ $role->id }})" class="bg-green-50 text-green-500 border-green-300 border">
                                                 Edit
                                             </x-button.action>
                                         </div>
@@ -124,7 +129,7 @@
                                 <x-table.td colspan="6">
                                     <div class="flex justify-center items-center space-x-2">
                                         {{-- <x-icon.inbox class="h-8 w-8 text-cool-gray-400" /> --}}
-                                        <span class="font-medium py-8 text-cool-gray-400 text-xl">No permissions found...</span>
+                                        <span class="font-medium py-8 text-cool-gray-400 text-xl">No roles found...</span>
                                     </div>
                                 </x-table.td>
                             </x-table.tbody-row>
@@ -135,7 +140,7 @@
                 </div>
             </x-slot>
             <x-slot name="tablePagination">
-                {{ $permissions->links('vendor.pagination.custom') }}
+                {{ $roles->links('vendor.pagination.custom') }}
             </x-slot>
         </x-table>
     </div>
@@ -145,18 +150,28 @@
             <x-slot name="title"><span class="text-gray-500 font-semibold">{{ $modalTitle }}</span></x-slot>
 
             <x-slot name="content">
-                    <div class="form-group flex flex-col mb-5">
-                        <label for="name" class="mb-2 text-gray-400">Name of the permission *</label>
-                        <input wire:model="editing.name" class="form-control border-gray-300 px-3 py-2 rounded-md shadow-sm placeholder:text-gray-500 text-gray-500" type="text" id="name" placeholder="Eg : Add product">
-                        @error('editing.name')
-                            <p class="text-error-color mt-2 font-semibold text-sm">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-input.group label="Name of the role *" for="name" :error="$errors->first('role.name')">
+                        <input wire:model="role.name" id="name" class="form-input" type="text" placeholder="Eg : Staff">
+                   </x-input.group>
+
+                   <x-input.group label="Permissions" for="permissions" :error="$errors->first('selectedCategories')">
+                        <div wire:ignore x-data>
+                            <div class="mb-2">
+                                <span class="select-all cursor-pointer text-xs bg-primary-color text-white py-1 px-4 rounded-md">Select All</span>
+                                <span class="deselect-all cursor-pointer text-xs bg-primary-color text-white py-1 px-4 rounded-md">Deselect All</span>
+                            </div>
+                            <select class="form-input select2  w-full" id="permissions" multiple style="width: 100%">
+                                <option value="" disabled="disabled">Select permissions </option>
+                                @foreach ($permissions as $id => $permission)
+                                    <option value="{{ $id }}">{{ $permission }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </x-input.group>
             </x-slot>
 
             <x-slot name="footer">
                 <x-button.secondary wire:click="$set('showEditModal', false)">Cancel</x-button.secondary>
-
                 <x-button.primary type="submit">Save</x-button.primary>
             </x-slot>
         </x-modal.dialog>
@@ -164,7 +179,7 @@
 
     <form wire:submit.prevent="deleteSelected">
         <x-modal.confirmation wire:model.defer="showDeleteModal">
-            <x-slot name="title"><span class="text-gray-500 font-semibold">Delete Permission</span></x-slot>
+            <x-slot name="title"><span class="text-gray-500 font-semibold">Delete role</span></x-slot>
 
             <x-slot name="content">
                 <div class="py-8 text-cool-gray-700">Are you sure you? This action is irreversible.</div>
@@ -177,6 +192,32 @@
             </x-slot>
         </x-modal.confirmation>
     </form>
+
+
+    @push('scripts')
+        <script>
+            $(document).ready(function () {
+
+                $('#permissions').select2({
+                    placeholder: "Select permissions",
+                    multiple: true,
+                    allowClear: true,
+                });
+
+                $('#permissions').on('change', function (e) {
+                    let data = $('#permissions').select2("val");
+                    @this.set('selectedPermissions', data);
+                });
+
+                Livewire.on('loadPermissions', permissions => {
+                    $('#permissions').val(permissions);
+                    $('#permissions').trigger('change');
+                })
+
+            });
+
+        </script>
+    @endpush
 
 </div>
 
