@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\DataTable\WithBulkAction;
-use App\Http\Livewire\DataTable\WithPerPagePagination;
-use App\Http\Livewire\DataTable\WithSorting;
 use Livewire\Component;
 use App\Models\Permission;
-
+use Illuminate\Support\Facades\Gate;
+use App\Http\Livewire\DataTable\WithSorting;
+use Symfony\Component\HttpFoundation\Response;
+use App\Http\Livewire\DataTable\WithBulkAction;
+use App\Http\Livewire\DataTable\WithPerPagePagination;
 
 class PermissionComponent extends Component
 {
@@ -89,6 +90,8 @@ class PermissionComponent extends Component
 
     public function render()
     {
+        abort_if(Gate::denies('permission_access'), Response::HTTP_FORBIDDEN,'403 Forbidden');
+
         return view('livewire.permission-component',[
             'permissions' => $this->rows
         ]);

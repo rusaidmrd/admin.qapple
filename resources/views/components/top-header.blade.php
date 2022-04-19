@@ -28,13 +28,13 @@
             </svg>
         </div>
 
-        <div class="account-info flex items-center justify-between ml-5 relative" x-data="{isprofileMenuOpen:false}">
+        <div x-data="{isprofileMenuOpen:false}" class="account-info flex items-center justify-between ml-5 relative">
             <div class="profile-img">
                 <img src="{{ asset('images/no_profile.png') }}" alt="profile image" class="ml-4 w-10 h-10 rounded-full border-2 border-gray-400">
             </div>
             <div
                 class="ml-2 relative cursor-pointer leading-none"
-                @click="isprofileMenuOpen = !isprofileMenuOpen"
+                @click.prevent="isprofileMenuOpen = !isprofileMenuOpen"
             >
                 <div class="flex justify-between items-start">
                     <h4 class="text-sm font-bold mr-1">{{ Auth::user()->name }}</h4>
@@ -45,8 +45,8 @@
 
                 <span class="text-xs text-gray-400">Admin</span>
             </div>
+
             <div
-                @click.away="isprofileMenuOpen = false"
                 class="absolute right-0 top-12 px-4 py-4 rounded-lg bg-white w-40 shadow-md"
                 x-cloak
                 x-show="isprofileMenuOpen"
