@@ -64,7 +64,7 @@
             </button>
             <ul class="pl-4 sub-menu" :class="{ 'show-menu': isSubMenuOpen }">
                 <li>
-                    <a href="#" class="py-2 pl-4 block text-sm hover:bg-primary-dark">User list</a>
+                    <a href="{{ route('users.index') }}" class="py-2 pl-4 block text-sm hover:bg-primary-dark">User list</a>
                 </li>
                 <li>
                     <a href="{{ route('roles.index') }}" class="py-2 pl-4 block text-sm hover:bg-primary-dark">Roles</a>

@@ -1,12 +1,14 @@
 <?php
 
-
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\PermissionComponent;
 use App\Http\Livewire\Products\AddProduct;
 use App\Http\Livewire\Products\EditProduct;
 use App\Http\Livewire\Products\ViewProducts;
 use App\Http\Livewire\UserManagement\RoleComponent;
+use App\Http\Livewire\UserManagement\UserComponent;
+use App\Http\Livewire\UserManagement\UserUpdateComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +50,19 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/permissions',PermissionComponent::class)->name('permissions.index');
     Route::get('/roles',RoleComponent::class)->name('roles.index');
 
+
+    Route::prefix('users')->group(function(){
+        Route::get('/',UserComponent::class)->name('users.index');
+        Route::get('/create',[UserController::class,'create'])->name('users.create');
+        Route::post('',[UserController::class,'store'])->name('users.store');
+        Route::get('/edit/{user}',[UserController::class,'edit'])->name('users.edit');
+    });
+
     Route::prefix('products')->group(function(){
         Route::get('/',ViewProducts::class)->name('products.index');
         Route::get('/create',AddProduct::class)->name('products.create');
         Route::get('/edit/{product}',EditProduct::class)->name('products.edit');
+        Route::put('/update/{user}',[UserController::class,'update'])->name('users.update');
     });
 
 });
