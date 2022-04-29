@@ -30,7 +30,7 @@ class ProductAttributes extends Component
                 new UniqueProductAttributes($this->product,$this->productAttribute,$this->selectedAttributes)
             ],
             'productAttribute.quantity' => 'required',
-            'productAttribute.price' => 'required',
+            'productAttribute.price' => 'sometimes',
         ];
     }
 

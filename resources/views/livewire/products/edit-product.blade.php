@@ -155,6 +155,10 @@
                     multiple: true,
                     allowClear: true,
                 });
+
+                let data = $('#category').select2("val");
+                @this.set('selectedCategories', data);
+
                 $('#category').on('change', function (e) {
                     let data = $('#category').select2("val");
                     @this.set('selectedCategories', data);

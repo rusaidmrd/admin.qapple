@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
                 'id' => 1,
                 'name' => 'Rusaid MRD',
                 'email'          => 'admin@admin.com',
-                'password'       => '$2y$10$yRfHIFyppaYVn10cTZ8GnOHdeY7AT.w7E5H6O4tY2xhLO8DDHII1e',
+                'password'       => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
                 'remember_token' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -28,5 +28,6 @@ class UserTableSeeder extends Seeder
         ];
 
         User::insert($users);
+
     }
 }

@@ -19,7 +19,7 @@ class EditProduct extends Component
         'product.brand_id'  =>  'required|not_in:0',
         'selectedCategories' => 'required',
         'product.price'     =>  'required|regex:/^\d+(\.\d{1,2})?$/',
-        'product.sale_price'  =>  'regex:/^\d+(\.\d{1,2})?$/',
+        'product.sale_price'  =>  'sometimes',
         'product.quantity'  =>  'required|numeric',
         'product.weight' => 'sometimes',
         'product.description' => 'sometimes',
@@ -34,6 +34,7 @@ class EditProduct extends Component
 
     public function change()
     {
+
         $this->validate();
 
         if($this->product->status === null) $this->product->status = 0;

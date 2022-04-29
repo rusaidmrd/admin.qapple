@@ -19,7 +19,7 @@ class AddProduct extends Component
         'product.brand_id'  =>  'required|not_in:0',
         'selectedCategories' => 'required',
         'product.price'     =>  'required|regex:/^\d+(\.\d{1,2})?$/',
-        'product.sale_price'  =>  'regex:/^\d+(\.\d{1,2})?$/',
+        'product.sale_price'  =>  'sometimes',
         'product.quantity'  =>  'required|numeric',
         'product.weight' => 'sometimes',
         'product.description' => 'sometimes',
