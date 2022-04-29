@@ -18,6 +18,7 @@ class CreateAttributeValuesTable extends Migration
             $table->foreignId('attribute_id')->constrained();
             $table->text('value');
             $table->decimal('price', 2)->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description')->nullable();
-            $table->unsignedInteger('quantity');
+            $table->unsignedInteger('quantity')->nullable();
             $table->decimal('weight', 8, 2)->nullable();
             $table->decimal('price', 8, 2)->nullable();
             $table->decimal('sale_price', 8, 2)->nullable();
