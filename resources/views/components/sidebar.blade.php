@@ -52,7 +52,13 @@
             </a>
         </li>
         <li class="mb-1">
-            <a href="#" class="py-4 block pl-4 text-sm hover:bg-primary-dark">
+            <a
+                href="{{ route('attributes.index') }}"
+                @class([
+                    'py-4 block pl-4 text-sm hover:bg-primary-dark',
+                    'text-secondary-color border-secondary-color border-r-5' => request()->routeIs('attributes.index')
+                ])
+            >
                 <i class="fa-solid fa-bars-staggered"></i>
                 <span class="ml-1">Attributes</span>
             </a>

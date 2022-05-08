@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Attributes\AttributeComponent;
+use App\Http\Livewire\CategoryComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\PermissionComponent;
 use App\Http\Livewire\Products\AddProduct;
@@ -40,15 +42,14 @@ Route::middleware(['auth'])->get('/dashboard', function () {
 
 // Route::post('/logout', [AdminAuthController::class,'logout'])->middleware('auth:admin')->name('admin.logout');
 
-Route::middleware(['auth'])->get('/categories', function(){
-    return view('pages.category.index');
-})->name('category.index');
 
 
 Route::middleware(['auth'])->group(function(){
 
     Route::get('/permissions',PermissionComponent::class)->name('permissions.index');
     Route::get('/roles',RoleComponent::class)->name('roles.index');
+    Route::get('/attributes',AttributeComponent::class)->name('attributes.index');
+    Route::get('/categories',CategoryComponent::class)->name('category.index');
 
 
     Route::prefix('users')->group(function(){
