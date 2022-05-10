@@ -68,7 +68,11 @@
                                 </x-table.th>
 
                                 <x-table.th>
-                                    Parent Category
+                                    Featured
+                                </x-table.th>
+
+                                <x-table.th>
+                                    Menu
                                 </x-table.th>
 
                                 <x-table.th class="w-64">
@@ -82,7 +86,7 @@
                                     <x-table.td colspan="5">
                                         @unless ($selectAll)
                                            <div>
-                                                <span class="text-gray-500">You have selected <strong>{{ $categories->count() }}</strong> roles, do you want to select all <strong>{{ $categories->total() }}</strong> ?</span>
+                                                <span class="text-gray-500">You have selected <strong>{{ $categories->count() }}</strong> categories, do you want to select all <strong>{{ $categories->total() }}</strong> ?</span>
                                                 <x-button.link wire:click="selectAll" class="text-gray-600 ml-1 underline font-bold">Select All</x-button.link>
                                            </div>
                                         @else
@@ -105,15 +109,27 @@
                                         {{ $category->name }}
                                     </x-table.td>
 
-                                    <x-table.td class="py-6">
-                                        {{ $category->parent->name ?? 'Root' }}
+                                    <x-table.td>
+                                       @if ($category->featured == 1)
+                                            <span class="badge badge-success">Yes</span>
+                                       @else
+                                            <span class="badge badge-danger">No</span>
+                                       @endif
+                                    </x-table.td>
+
+                                    <x-table.td>
+                                        @if ($category->menu == 1)
+                                            <span class="badge badge-success">Yes</span>
+                                        @else
+                                            <span class="badge badge-danger">No</span>
+                                        @endif
                                     </x-table.td>
 
                                     <x-table.td>
                                         <div class="space-x-0.5">
-                                            {{-- <x-button.action wire:click="edit({{ $category->id }})" class="bg-green-50 text-green-500 border-green-300 border">
+                                            <x-button.action wire:click="edit({{ $category->id }})" class="bg-green-50 text-green-500 border-green-300 border">
                                                 Edit
-                                            </x-button.action> --}}
+                                            </x-button.action>
                                         </div>
                                     </x-table.td>
 
@@ -148,16 +164,40 @@
                         <input wire:model="category.name" id="name" class="form-input" type="text" placeholder="Enter category">
                    </x-input.group>
 
-                   <x-input.group label="Parent Category" for="parent-category" :error="$errors->first('selectedCategories')">
+                   <x-input.group label="Parent Category" for="parent-category" :error="$errors->first('category.parent_id')">
                         <div>
                             <select class="form-input select2  w-full" id="parent-category" wire:model="category.parent_id">
                                 <option value="">Select Parent Category </option>
-                                @foreach ($parentCategories as $parentCategory)
-                                    <option value="{{ $parentCategory->id }}">{{ $parentCategory->name }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </x-input.group>
+
+                    <div class="flex items-center space-x-9">
+                        <div class="form-group flex items-center mb-5 space-x-2">
+                            <input
+                                wire:model="category.featured"
+                                type="checkbox"
+                                class="rounded border-gray-300 block transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                                id="featured"
+                            />
+                            <label for="featured" class="text-gray-600 font-semibold">Featured category</label>
+                        </div>
+
+                        <div class="form-group flex items-center mb-5 space-x-2">
+                            <input
+                                wire:model="category.menu"
+                                type="checkbox"
+                                class="rounded border-gray-300 block transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                                id="menu"
+                            />
+                            <label for="menu" class="text-gray-600 font-semibold">Show in menu</label>
+                        </div>
+
+                    </div>
+
             </x-slot>
 
             <x-slot name="footer">
@@ -167,9 +207,9 @@
         </x-modal.dialog>
     </form>
 
-    {{-- <form wire:submit.prevent="deleteSelected">
+    <form wire:submit.prevent="deleteSelected">
         <x-modal.confirmation wire:model.defer="showDeleteModal">
-            <x-slot name="title"><span class="text-gray-500 font-semibold">Delete role</span></x-slot>
+            <x-slot name="title"><span class="text-gray-500 font-semibold">Delete category</span></x-slot>
 
             <x-slot name="content">
                 <div class="py-8 text-cool-gray-700">Are you sure you? This action is irreversible.</div>
@@ -181,9 +221,22 @@
                 <x-button.primary type="submit">Delete</x-button.primary>
             </x-slot>
         </x-modal.confirmation>
-    </form> --}}
+    </form>
 
+    @push('scripts')
+        <script>
+            $(document).ready(function(){
+                Livewire.on('edit.enabled',category => {
+                    if(!category.parent_id) {
+                        $('#parent-category').prop('disabled', true);
+                    }else {
+                        $('#parent-category').prop('disabled', false);
+                    }
+                });
 
+            });
+        </script>
+    @endpush
 
 
 </div>

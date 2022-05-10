@@ -22,17 +22,31 @@ class CategoryComponent extends Component
 
     protected $rules = [
         'category.name' => 'required',
-        'category.parent_id' => 'nullable',
+        'category.parent_id' => 'required',
+        'category.featured' => 'sometimes',
+        'category.menu' => 'sometimes',
     ];
 
     public function mount()
     {
         $this->category = $this->makeBlankCategory();
+        $this->category->featured = 0;
+        $this->category->menu = 0;
     }
 
     public function create()
     {
+        if($this->category->getKey()) $this->category = $this->makeBlankCategory();
+        $this->modalTitle = "Add Category";
         $this->showEditModal = true;
+    }
+
+    public function edit(Category $category)
+    {
+        $this->category = $category;
+        $this->modalTitle = "Edit Category";
+        $this->showEditModal = true;
+        $this->emit('edit.enabled',$this->category);
     }
 
     public function save()
@@ -45,6 +59,13 @@ class CategoryComponent extends Component
     public function makeBlankCategory()
     {
         return Category::make();
+    }
+
+    public function deleteSelected()
+    {
+        $this->selectedRowsQuery->delete();
+        $this->showDeleteModal = false;
+
     }
 
     public function getRowsQueryProperty()
@@ -60,10 +81,9 @@ class CategoryComponent extends Component
 
     public function render()
     {
-        $parentCategories = Category::whereNull('parent_id')->get();
+
         return view('livewire.category-component',[
             'categories' => $this->rows,
-            'parentCategories' => $parentCategories
         ]);
     }
 }
