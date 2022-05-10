@@ -17,7 +17,7 @@ class CreateProductAttributesTable extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained();
             $table->integer('quantity');
-            $table->decimal('price')->nullable();
+            $table->integer('price')->unsigned()->nullable();
             $table->foreignId('attribute_id')->constrained();
             $table->string('value');
             $table->timestamps();

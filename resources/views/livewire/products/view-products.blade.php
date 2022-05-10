@@ -140,7 +140,7 @@
                                     </x-table.td>
 
                                     <x-table.td class="text-primary-color font-semibold">
-                                        QAR {{ $product->price }}
+                                        QAR
                                     </x-table.td>
 
                                     <x-table.td>

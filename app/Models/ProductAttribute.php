@@ -11,7 +11,6 @@ class ProductAttribute extends Model
 
     protected $fillable = ['product_id', 'quantity', 'price','attribute_id','value'];
 
-
     public function attribute()
     {
         return $this->belongsTo(Attribute::class);

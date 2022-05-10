@@ -38,7 +38,7 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
-    public function attributes()
+    public function productAttributes()
     {
         return $this->hasMany(ProductAttribute::class);
     }
@@ -57,6 +57,16 @@ class Product extends Model
     public function imageCount()
     {
         return $this->images->count();
+    }
+
+    public function productAttributeCount()
+    {
+        return $this->productAttributes->count();
+    }
+
+    public function hasProductAttribut()
+    {
+        return $this->productAttributeCount() > 0;
     }
 
 }
