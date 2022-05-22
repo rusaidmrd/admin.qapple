@@ -125,7 +125,11 @@
                                     </x-table.td>
 
                                     <x-table.td>
-                                        <img class="w-12 h-14 object-cover rounded-md overflow-hidden bg-gray-100" src="{{ $product->images[0]->url() }}" alt="{{ $product->name }}">
+                                        @if (count($product->images) == 0)
+                                            <img class="w-12 h-14 object-cover rounded-md overflow-hidden bg-gray-100" src="{{ $product->defaultImageUrl() }}" alt="{{ $product->name }}">
+                                        @else
+                                            <img class="w-12 h-14 object-cover rounded-md overflow-hidden bg-gray-100" src="{{ $product->images[0]->url() }}" alt="{{ $product->name }}">
+                                        @endif
                                     </x-table.td>
 
                                     <x-table.td>

@@ -59,6 +59,7 @@
                             <x-input.rich-text wire:model.difer="product.description" id="description" />
                         </div>
                     </div>
+
                     <div class="flex items-center space-x-9">
                         <div class="form-group flex items-center mb-5 space-x-2">
                             <input
@@ -83,6 +84,9 @@
                         </div>
 
                     </div>
+
+
+
                     <div class="space-x-2">
                         <a href="{{ route('products.index') }}" class="bg-secondary-color text-white py-3 px-4 rounded-md border-secondary-color ">
                             Back

@@ -69,4 +69,9 @@ class Product extends Model
         return $this->productAttributeCount() > 0;
     }
 
+    public function defaultImageUrl()
+    {
+        return asset('storage/empty.png');
+    }
+
 }

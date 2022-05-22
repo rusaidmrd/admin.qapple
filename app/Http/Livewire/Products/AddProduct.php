@@ -6,9 +6,12 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddProduct extends Component
 {
+
+    use WithFileUploads;
 
     public Product $product;
     public $selectedCategories=[];
@@ -18,9 +21,9 @@ class AddProduct extends Component
         'product.sku'       =>  'required',
         'product.brand_id'  =>  'required|not_in:0',
         'selectedCategories' => 'required',
-        'product.price'     =>  'nullable|sometimes|numeric',
-        'product.sale_price'  =>  'nullable|sometimes|numeric',
-        'product.quantity'  =>  'nullable|sometimes|numeric',
+        'product.price'     =>  'required|numeric',
+        'product.sale_price'  =>  'nullable|numeric',
+        'product.quantity'  =>  'required|numeric',
         'product.weight' => 'sometimes',
         'product.description' => 'sometimes',
         'product.status' => 'sometimes',
@@ -39,6 +42,7 @@ class AddProduct extends Component
 
     public function save()
     {
+
         $this->validate();
 
         if($this->product->status === null) $this->product->status = 0;

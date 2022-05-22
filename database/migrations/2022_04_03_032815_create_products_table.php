@@ -20,9 +20,9 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description')->nullable();
-            $table->unsignedInteger('quantity')->nullable();
+            $table->unsignedInteger('quantity');
             $table->decimal('weight', 8, 2)->nullable();
-            $table->integer('price')->unsigned()->nullable();
+            $table->integer('price')->unsigned();
             $table->integer('sale_price')->unsigned()->nullable();
             $table->boolean('status')->default(0);
             $table->boolean('featured')->default(0);
