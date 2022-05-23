@@ -43,7 +43,7 @@
                     </svg>
                 </div>
 
-                <span class="text-xs text-gray-400">Admin</span>
+                <span class="text-xs text-gray-400">{{ Auth::user()->roles[0]->name }}</span>
             </div>
 
             <div

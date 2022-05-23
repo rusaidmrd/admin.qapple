@@ -41,13 +41,15 @@
                         </div>
 
 
+                        @can('permission_create')
+                            <div class="bg-secondary-color border border-secondary-color rounded-md">
 
-                        <div class="bg-secondary-color border border-secondary-color rounded-md">
-                            <button class="text-sm text-gray-cool py-1.5 px-4" wire:click="create">
-                                <i class="fa-solid fa-square-plus"></i>
-                                <span class="ml-1">Add Permission</span>
-                            </button>
-                        </div>
+                                <button class="text-sm text-gray-cool py-1.5 px-4" wire:click="create">
+                                    <i class="fa-solid fa-square-plus"></i>
+                                    <span class="ml-1">Add Permission</span>
+                                </button>
+                            </div>
+                        @endcan
                     </div>
                 </div>
             </x-slot>
@@ -72,9 +74,12 @@
                                     Date Added
                                 </x-table.th>
 
-                                <x-table.th class="w-64">
-                                    Action
-                                </x-table.th>
+                                @can('permission_edit')
+                                    <x-table.th class="w-64">
+                                        Action
+                                    </x-table.th>
+                                @endcan
+
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-100">
@@ -110,13 +115,15 @@
                                         {{ $permission->created_at->toFormattedDateString() }}
                                     </x-table.td>
 
-                                    <x-table.td>
-                                        <div class="space-x-0.5">
-                                            <x-button.action wire:click="edit({{ $permission->id }})" class="bg-green-50 text-green-500 border-green-300 border">
-                                                Edit
-                                            </x-button.action>
-                                        </div>
-                                    </x-table.td>
+                                   @can('permission_edit')
+                                        <x-table.td>
+                                            <div class="space-x-0.5">
+                                                <x-button.action wire:click="edit({{ $permission->id }})" class="bg-green-50 text-green-500 border-green-300 border">
+                                                    Edit
+                                                </x-button.action>
+                                            </div>
+                                        </x-table.td>
+                                   @endcan
 
                                 </x-table.tbody-row>
                             @empty

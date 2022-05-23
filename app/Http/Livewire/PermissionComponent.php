@@ -90,7 +90,7 @@ class PermissionComponent extends Component
 
     public function render()
     {
-        abort_if(Gate::denies('permission_access'), Response::HTTP_FORBIDDEN,'403 Forbidden');
+        abort_if(Gate::denies('permission_show'), Response::HTTP_FORBIDDEN,'403 Forbidden');
 
         return view('livewire.permission-component',[
             'permissions' => $this->rows

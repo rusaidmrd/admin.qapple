@@ -144,7 +144,11 @@
                                     </x-table.td>
 
                                     <x-table.td class="text-primary-color font-semibold">
-                                        QAR
+                                        @if ($product->hasProductAttribute())
+                                           Variation price
+                                        @else
+                                            QAR {{ $product->price }}
+                                        @endif
                                     </x-table.td>
 
                                     <x-table.td>

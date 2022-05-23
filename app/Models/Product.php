@@ -64,7 +64,7 @@ class Product extends Model
         return $this->productAttributes->count();
     }
 
-    public function hasProductAttribut()
+    public function hasProductAttribute()
     {
         return $this->productAttributeCount() > 0;
     }

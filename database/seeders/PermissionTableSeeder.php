@@ -18,193 +18,145 @@ class PermissionTableSeeder extends Seeder
         $permissions = [
             [
                 'id'    => '1',
-                'name' => 'user_management_access',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'id'    => '2',
                 'name' => 'permission_create',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '3',
+                'id'    => '2',
                 'name' => 'permission_edit',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '4',
+                'id'    => '3',
                 'name' => 'permission_show',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '5',
+                'id'    => '4',
                 'name' => 'permission_delete',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '6',
-                'name' => 'permission_access',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'id'    => '7',
+                'id'    => '5',
                 'name' => 'role_create',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '8',
+                'id'    => '6',
                 'name' => 'role_edit',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '9',
+                'id'    => '7',
                 'name' => 'role_show',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '10',
+                'id'    => '8',
                 'name' => 'role_delete',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '11',
-                'name' => 'role_access',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'id'    => '12',
+                'id'    => '9',
                 'name' => 'user_create',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '13',
+                'id'    => '10',
                 'name' => 'user_edit',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '14',
+                'id'    => '11',
                 'name' => 'user_show',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '15',
+                'id'    => '12',
                 'name' => 'user_delete',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '16',
-                'name' => 'user_access',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'id'    => '17',
-                'name' => 'product_management_access',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'id'    => '18',
+                'id'    => '13',
                 'name' => 'product_category_create',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '19',
+                'id'    => '14',
                 'name' => 'product_category_edit',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '20',
+                'id'    => '15',
                 'name' => 'product_category_show',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '21',
+                'id'    => '16',
                 'name' => 'product_category_delete',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '22',
-                'name' => 'product_category_access',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'id'    => '23',
+                'id'    => '17',
                 'name' => 'product_attribute_create',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '24',
+                'id'    => '18',
                 'name' => 'product_attribute_edit',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '25',
+                'id'    => '19',
                 'name' => 'product_attribute_show',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '26',
+                'id'    => '20',
                 'name' => 'product_attribute_delete',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '27',
-                'name' => 'product_attribute_access',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'id'    => '28',
+                'id'    => '21',
                 'name' => 'product_create',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '29',
+                'id'    => '22',
                 'name' => 'product_edit',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '30',
+                'id'    => '23',
                 'name' => 'product_show',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'id'    => '31',
+                'id'    => '24',
                 'name' => 'product_delete',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'id'    => '32',
-                'name' => 'product_access',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
